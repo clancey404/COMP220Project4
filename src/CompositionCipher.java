@@ -10,18 +10,19 @@ public class CompositionCipher extends Cipher{
     }
 
     public CompositionCipher(CompositionCipher other){
-        this.ciphers = new ArrayList<>();
-        for(Cipher julius : other.ciphers){
-            this.ciphers.add(julius);
+        ciphers = new ArrayList<>();
+        for(int i = 0; i < other.ciphers.size(); i++){
+            ciphers.add(other.ciphers.get(i));
         }
         // Copy Constructor
     }
 
     public char encrypt(char c){
-        for(Cipher brutus : ciphers){
-            c = brutus.encrypt(c);
+        for(int i = 0; i < ciphers.size(); i++){
+            c = ciphers.get(i).encrypt(c);
         }
         return c;
+        // Encrypts each character through all the ciphers
     }
 
     public char decrypt(char c){
@@ -37,6 +38,6 @@ public class CompositionCipher extends Cipher{
 
     public void add(Cipher theCipher){
         Cipher fresh = theCipher.newCopy();
-        this.ciphers.add(fresh);
+        ciphers.add(fresh);
     }
 }

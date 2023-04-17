@@ -23,8 +23,8 @@ public class VigenereCipher extends Cipher{
 	
 	public VigenereCipher(VigenereCipher other){
 		this.subCiphers = new ArrayList<>();
-		for(int i = 0; i < other.subCiphers.size(); i++){
-			this.subCiphers.add(other.subCiphers.get(i));
+		for(CaesarCipher julius : other.subCiphers){
+			this.subCiphers.add(julius);
 		}
 		this.nextIndexForEncrypt = other.nextIndexForEncrypt;
 		this.nextIndexForDecrypt = other.nextIndexForDecrypt;
